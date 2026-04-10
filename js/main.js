@@ -50,4 +50,21 @@
       { passive: true }
     );
   }
+
+  const contactForm = document.getElementById("contact-form");
+  const contactStatus = document.getElementById("contact-status");
+
+  if (contactForm && contactStatus) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      contactStatus.textContent = "Thanks! We received your contact request.";
+      contactForm.reset();
+    });
+  }
 })();
